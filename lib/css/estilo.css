@@ -1,5 +1,6 @@
 .estrelas input[type=radio] {
     display: none;
+    
   }
   .estrelas label i.fa:before {
     content:'\f005';
@@ -7,4 +8,24 @@
   }
   .estrelas input[type=radio]:checked ~ label i.fa:before {
     color: #CCC;
+  }
+  #circulo{
+    float: right;
+    margin-right: 60px;
+  }
+  .bt{
+    background-color: #107f92;
+    border: 0px;
+    color: beige;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    /*width: 250px;*/
+    height: 40px;
+        
+  }
+  .texto{
+    margin-left: 16%;
+  }
+  .quadro{
+    margin-bottom: 130px;
   }

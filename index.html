@@ -1,114 +1,47 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
+<html ng-app="mylooks">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta charset="utf-8">
     <title>Looks - Conheça nossos looks</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/css/bootstrap.css" />
     <link rel="stylesheet" href="lib/css/estilo.css" />
-    
-	<script src="lib/js/bootstrap.bundle.js"></script>
-	<script src="lib/js/bootstrap.js"></script>
-  <script src="lib/angular/angular.min.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron text-left bg-light">
+    <div class="texto">
+    <h1>Looks</h1>
+    <p>Conheça nossos looks</p>
+  </div>
+  </div>
+  <div class="row" ng-controller="lookcontroller" ng-init="getProdutos()">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 quadro" ng-repeat="produto in produtos">
+              <img src="arquivos/produtos/{{produto.imagens.nome}}" width="100%"/>
+              <h5>{{produto.nome}}</h5>
+              <div class="estrelas">
+                <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+                <label for="cm_star-1"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-1" name="fb" value="{{produto.notas.nota=1}}"/>
+                <label for="cm_star-2"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-2" name="fb" value="{{produto.notas.nota=2}}"/>
+                <label for="cm_star-3"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-3" name="fb" value="{{produto.notas.nota=3}}"/>
+                <label for="cm_star-4"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-4" name="fb" value="{{produto.notas.nota=4}}"/>
+                <label for="cm_star-5"><i class="fa"></i></label>
+                <input type="radio" id="cm_star-5" name="fb" value="{{produto.notas.nota=5}}"/>
+              </div>
+              <p>{{produto.categoria}} - R$ {{produto.precoMedio}} <span id="circulo"><i class="fa fa-circle" aria-hidden="true"></i> {{produto.disponivel ? 'Disponível' : 'Indisponível'}}</span></p>
+            <input type="button" class="bt btn col-sm-12" value="DETALHES">
+            
+            </div>
+          </div>
+        </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="lib/angular/script.js"></script>
-  </head>
-  <body  ng-app="mylooks">
-    <section ng-controller="lookcontroller"></section>
-	
-    <div class="jumbotron text-center">
-      <h1>Looks</h1>
-      <p>Conheça nossos looks</p>
-    </div>
-    
-    <!--ESTRELAS DE PONTUAÇÃO
-    <div class="estrelas">
-      <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-      <label for="cm_star-1"><i class="fa"></i></label>
-      <input type="radio" id="cm_star-1" name="fb" value="1"/>
-      <label for="cm_star-2"><i class="fa"></i></label>
-      <input type="radio" id="cm_star-2" name="fb" value="2"/>
-      <label for="cm_star-3"><i class="fa"></i></label>
-      <input type="radio" id="cm_star-3" name="fb" value="3"/>
-      <label for="cm_star-4"><i class="fa"></i></label>
-      <input type="radio" id="cm_star-4" name="fb" value="4"/>
-      <label for="cm_star-5"><i class="fa"></i></label>
-      <input type="radio" id="cm_star-5" name="fb" value="5"/>
-    </div>
--->
 
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <h3>Column 1</h3>
-          <p>Lorem ipsum dolor..</p>
-          <div class="estrelas">
-            <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-            <label for="cm_star-1"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-1" name="fb" value="1"/>
-            <label for="cm_star-2"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-2" name="fb" value="2"/>
-            <label for="cm_star-3"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-3" name="fb" value="3"/>
-            <label for="cm_star-4"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-4" name="fb" value="4"/>
-            <label for="cm_star-5"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-5" name="fb" value="5"/>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <h3>Column 2</h3>
-          <p>Lorem ipsum dolor..</p>
-          <div class="estrelas">
-            <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-            <label for="cm_star-1"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-1" name="fb" value="1"/>
-            <label for="cm_star-2"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-2" name="fb" value="2"/>
-            <label for="cm_star-3"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-3" name="fb" value="3"/>
-            <label for="cm_star-4"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-4" name="fb" value="4"/>
-            <label for="cm_star-5"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-5" name="fb" value="5"/>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <h3>Column 3</h3>
-          <p>Lorem ipsum dolor..</p>
-          <div class="estrelas">
-            <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-            <label for="cm_star-1"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-1" name="fb" value="1"/>
-            <label for="cm_star-2"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-2" name="fb" value="2"/>
-            <label for="cm_star-3"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-3" name="fb" value="3"/>
-            <label for="cm_star-4"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-4" name="fb" value="4"/>
-            <label for="cm_star-5"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-5" name="fb" value="5"/>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <h3>Column 3</h3>
-          <p>Lorem ipsum dolor..</p>
-          <div class="estrelas">
-            <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-            <label for="cm_star-1"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-1" name="fb" value="1"/>
-            <label for="cm_star-2"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-2" name="fb" value="2"/>
-            <label for="cm_star-3"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-3" name="fb" value="3"/>
-            <label for="cm_star-4"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-4" name="fb" value="4"/>
-            <label for="cm_star-5"><i class="fa"></i></label>
-            <input type="radio" id="cm_star-5" name="fb" value="5"/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+</body>
 </html>
