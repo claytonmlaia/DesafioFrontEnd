@@ -11,7 +11,7 @@
   }
   #circulo{
     float: right;
-    margin-right: 60px;
+    margin-right: 10px;
   }
   .bt{
     background-color: #107f92;
@@ -26,6 +26,6 @@
   .texto{
     margin-left: 16%;
   }
-  .quadro{
-    margin-bottom: 130px;
+  .menu-superior{
+    margin-left: 16%;
   }

@@ -1,26 +1,81 @@
 <html ng-app="mylooks">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="lib/css/bootstrap.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="lib/css/estilo.css" />
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <meta charset="utf-8">
-    <title>Looks - Conheça nossos looks</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="lib/css/bootstrap.css" />
-    <link rel="stylesheet" href="lib/css/estilo.css" />
+<title>Looks - Conheça nossos looks</title>
 </head>
 
 <body>
-  <div class="jumbotron text-left bg-light">
+  <div class="jumbotron text-left bg-white">
     <div class="texto">
     <h1>Looks</h1>
     <p>Conheça nossos looks</p>
   </div>
   </div>
+
+
+
+
+
+
+<hr>
+  <nav class="navbar navbar-expand-lg navbar-light" ng-controller="lookcontroller" ng-init="getProdutos()">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav menu-superior">
+        <li class="nav-item">
+          <label class="nav-link" >Filtrar por:</label>
+        </li>
+        <li class="nav-item">
+          <label class="nav-link" ><input type="radio">Disponível</label>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Preço
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <label class="dropdown-item"><input type="radio">$</label>
+            <label class="dropdown-item"><input type="radio">$$</label>
+            <label class="dropdown-item"><input type="radio">$$$</label>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categoria
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Ação</a>
+            <a class="dropdown-item" href="#">Outra ação</a>
+            <a class="dropdown-item" href="#">Algo mais aqui</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <hr>
+
+
+
+
+
+
+
   <div class="row" ng-controller="lookcontroller" ng-init="getProdutos()">
         <div class="container">
           <div class="row">
-            <div class="col-sm-4 quadro" ng-repeat="produto in produtos">
-              <img src="arquivos/produtos/{{produto.imagens.nome}}" width="100%"/>
-              <h5>{{produto.nome}}</h5>
+            <div class="col-sm-3 quadro" ng-repeat="produto in produtos" id="produto.nome{{$index}}" >
+              <img ng-repeat="imagem in produto.imagens" src="arquivos/produtos/{{imagem.nome}}" width="100%"/>
+              <h6>{{produto.nome}}</h6>
               <div class="estrelas">
                 <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
                 <label for="cm_star-1"><i class="fa"></i></label>
@@ -40,7 +95,7 @@
             </div>
           </div>
         </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/script.js"></script>
 
 </body>
