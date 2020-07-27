@@ -55,7 +55,7 @@
           </div>
         </li>
        <li class="nav-item">
-          <label class="nav-link" ><input type="button" class="btn btn-light" value="Limpar"></label>
+          <label class="nav-link" ><input type="reset" class="btn btn-light" value="Limpar" onClick="limpa()"></label>
         </li>
       </ul>
     </div>
@@ -88,5 +88,10 @@
         </div>
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular/produtos.js"></script>
+  <script>
+    function limpa() {
+      window.location.reload();
+    }
+    </script>
 </body>
 </html>
