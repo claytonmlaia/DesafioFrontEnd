@@ -67,7 +67,7 @@
           <div class="row">
             <div class="col-sm-3 quadro" ng-repeat="produto in produtos | filter:searchText:strict" id="produto.nome{{$index}}" >
               <img ng-repeat="imagem in produto.imagens" src="arquivos/produtos/{{imagem.nome}}" width="100%"/>
-              <h6>{{produto.nome}}</h6>
+              <h5>{{produto.nome}}</h5>
               <div class="estrelas">
                 <input type="radio" id="cm_star-empty" name="fb" value="3" checked/>
                 <label for="cm_star-1"><i class="fa"></i></label>
