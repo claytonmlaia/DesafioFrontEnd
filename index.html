@@ -29,15 +29,18 @@
           <label class="nav-link" >Filtrar por:</label>
         </li>
         <li class="nav-item">
-          <label class="nav-link" ><input type="radio" id="disponivel" name="disponivel" value="true"> Disponível</label>
+          <label class="nav-link" >
+            <input type="radio" name="optradio" ng-model="searchText.disponivel" value="true"> Disponível
+            <input type="radio" name="optradio" ng-model="searchText.disponivel" value="false"> Indisponível
+          </label>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Preço
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ng-controller="lookcontroller" ng-init="getProdutos()" onchange="checar()">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ng-controller="lookcontroller" ng-init="getProdutos()">
             <label class="dropdown-item" ng-repeat="precos in produtos | unique: 'precoMedio'">
-              <input type="radio" ng-model="option" name="valormedio" value="{{precos.precoMedio}}"> R$ {{precos.precoMedio}}
+              <input type="radio" name="optradio" ng-model="searchText.precoMedio" value="{{precos.precoMedio}}"> R$ {{precos.precoMedio}}
             </label>
           </div>
         </li>
@@ -46,7 +49,9 @@
             Categoria
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ng-controller="lookcontroller" ng-init="getProdutos()">
-            <label class="dropdown-item" ng-repeat="categoria in produtos | unique: 'categoria'"><input type="radio"> {{categoria.categoria}}</label>
+            <label class="dropdown-item" ng-repeat="categoria in produtos | unique: 'categoria'">
+              <input type="radio" name="optradio" ng-model="searchText.precoMedio" value="{{categoria.categoria}}"> {{categoria.categoria}}
+            </label>
           </div>
         </li>
        <li class="nav-item">
@@ -57,13 +62,10 @@
   </nav>
   <hr>
 
-  
-
-   
   <div class="row" ng-controller="lookcontroller" ng-init="getProdutos()">
         <div class="container">
           <div class="row">
-            <div class="col-sm-3 quadro" ng-repeat="produto in produtos | filter:{precoMedio:2, categoria:'Blusa', disponivel:'true'}" id="produto.nome{{$index}}" >
+            <div class="col-sm-3 quadro" ng-repeat="produto in produtos | filter:searchText:strict" id="produto.nome{{$index}}" >
               <img ng-repeat="imagem in produto.imagens" src="arquivos/produtos/{{imagem.nome}}" width="100%"/>
               <h6>{{produto.nome}}</h6>
               <div class="estrelas">
