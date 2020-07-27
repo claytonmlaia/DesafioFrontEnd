@@ -29,14 +29,16 @@
           <label class="nav-link" >Filtrar por:</label>
         </li>
         <li class="nav-item">
-          <label class="nav-link" ><input type="radio"> Disponível</label>
+          <label class="nav-link" ><input type="radio" id="disponivel" name="disponivel" value="true"> Disponível</label>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Preço
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ng-controller="lookcontroller" ng-init="getProdutos()">
-            <label class="dropdown-item" ng-repeat="precos in produtos | unique: 'precoMedio'"><input type="radio"> R$ {{precos.precoMedio}}</label>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" ng-controller="lookcontroller" ng-init="getProdutos()" onchange="checar()">
+            <label class="dropdown-item" ng-repeat="precos in produtos | unique: 'precoMedio'">
+              <input type="radio" ng-model="option" name="valormedio" value="{{precos.precoMedio}}"> R$ {{precos.precoMedio}}
+            </label>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -47,28 +49,35 @@
             <label class="dropdown-item" ng-repeat="categoria in produtos | unique: 'categoria'"><input type="radio"> {{categoria.categoria}}</label>
           </div>
         </li>
+       <li class="nav-item">
+          <label class="nav-link" ><input type="button" class="btn btn-light" value="Limpar"></label>
+        </li>
       </ul>
     </div>
   </nav>
   <hr>
+
+  
+
+   
   <div class="row" ng-controller="lookcontroller" ng-init="getProdutos()">
         <div class="container">
           <div class="row">
-            <div class="col-sm-3 quadro" ng-repeat="produto in produtos" id="produto.nome{{$index}}" >
+            <div class="col-sm-3 quadro" ng-repeat="produto in produtos | filter:{precoMedio:2, categoria:'Blusa', disponivel:'true'}" id="produto.nome{{$index}}" >
               <img ng-repeat="imagem in produto.imagens" src="arquivos/produtos/{{imagem.nome}}" width="100%"/>
               <h6>{{produto.nome}}</h6>
               <div class="estrelas">
-                <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+                <input type="radio" id="cm_star-empty" name="fb" value="3" checked/>
                 <label for="cm_star-1"><i class="fa"></i></label>
-                <input type="radio" id="cm_star-1" name="fb" value="{{produto.notas.nota=1}}"/>
+                <input type="radio" id="cm_star-1" name="fb"/>
                 <label for="cm_star-2"><i class="fa"></i></label>
-                <input type="radio" id="cm_star-2" name="fb" value="{{produto.notas.nota=2}}"/>
+                <input type="radio" id="cm_star-2" name="fb"/>
                 <label for="cm_star-3"><i class="fa"></i></label>
-                <input type="radio" id="cm_star-3" name="fb" value="{{produto.notas.nota=3}}"/>
+                <input type="radio" id="cm_star-3" name="fb"/>
                 <label for="cm_star-4"><i class="fa"></i></label>
-                <input type="radio" id="cm_star-4" name="fb" value="{{produto.notas.nota=4}}"/>
+                <input type="radio" id="cm_star-4" name="fb"/>
                 <label for="cm_star-5"><i class="fa"></i></label>
-                <input type="radio" id="cm_star-5" name="fb" value="{{produto.notas.nota=5}}"/>
+                <input type="radio" id="cm_star-5" name="fb"/>
               </div>
               <p>{{produto.categoria}} - R$ {{produto.precoMedio}} <span id="circulo"><i class="fa fa-circle" aria-hidden="true"></i> {{produto.disponivel ? 'Disponível' : 'Indisponível'}}</span></p>
             <input type="button" class="bt btn col-sm-12" value="DETALHES">
